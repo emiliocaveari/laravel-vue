@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\PessoaController;
+use App\Http\Controllers\Api\CategoriaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/categoria', [CategoriaController::class,'index']);
+
+Route::get('/pessoa', [PessoaController::class,'index']);
+Route::post('/pessoa', [PessoaController::class,'store']);
+Route::put('/pessoa/{id}', [PessoaController::class,'update']);
+Route::delete('/pessoa/{id}', [PessoaController::class,'delete']);
